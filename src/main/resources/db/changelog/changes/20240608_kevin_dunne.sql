@@ -4,14 +4,14 @@ CREATE TABLE IF NOT EXISTS holdings
     amount_held integer NOT NULL,
     share_id character varying(255) NOT NULL,
     CONSTRAINT holdings_pkey PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE IF NOT EXISTS portfolios
 (
     id character varying(255) NOT NULL,
     cash double precision,
     CONSTRAINT portfolios_pkey PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE IF NOT EXISTS portfolios_holdings
 (
@@ -26,4 +26,4 @@ CREATE TABLE IF NOT EXISTS portfolios_holdings
         REFERENCES public.portfolios (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-)
+);
