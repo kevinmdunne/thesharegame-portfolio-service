@@ -1,6 +1,7 @@
 package com.thesharegame.portfolioservice.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
@@ -11,7 +12,10 @@ import java.util.List;
 @Table(name="portfolios")
 @Data
 @Builder
+@AllArgsConstructor
 public class PortfolioEnt {
+
+    public PortfolioEnt(){}
 
     @Id
     @UuidGenerator(style = UuidGenerator.Style.RANDOM)

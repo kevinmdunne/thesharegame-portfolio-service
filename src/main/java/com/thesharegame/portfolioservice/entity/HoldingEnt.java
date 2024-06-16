@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
@@ -12,7 +13,10 @@ import org.hibernate.annotations.UuidGenerator;
 @Table(name="holdings")
 @Data
 @Builder
+@AllArgsConstructor
 public class HoldingEnt {
+
+    public HoldingEnt(){}
 
     @Id
     @UuidGenerator(style = UuidGenerator.Style.RANDOM)
