@@ -1,11 +1,13 @@
 package com.thesharegame.portfolioservice.service;
 
 import com.thesharegame.portfolioservice.dto.PortfolioDto;
+import com.thesharegame.portfolioservice.entity.HoldingEnt;
 import com.thesharegame.portfolioservice.entity.PortfolioEnt;
+import com.thesharegame.portfolioservice.exceptions.NotFoundException;
 import com.thesharegame.portfolioservice.repository.PortfolioRepository;
 import com.thesharegame.portfolioservice.utils.ModelConverter;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Optional;
 
@@ -18,19 +20,20 @@ public class PortfolioService {
         this.portfolioRepository = portfolioRepository;
     }
 
-    public PortfolioDto getPortfolioById(String id){
+    public PortfolioDto getPortfolioById(String id) throws NotFoundException {
         Optional<PortfolioEnt> portfolioEntOptional = this.portfolioRepository.findById(id);
         if(portfolioEntOptional.isPresent()) {
             PortfolioEnt portfolioEnt = portfolioEntOptional.get();
             return ModelConverter.convertEntToDto(portfolioEnt);
         }
-        return null;
+        throw new NotFoundException();
     }
 
     public void deletePortfolio(String id){
         this.portfolioRepository.deleteById(id);
     }
 
+    @Transactional
     public PortfolioDto savePortfolio(PortfolioDto portfolioDto){
         PortfolioEnt ent = ModelConverter.convertDtoToEnt(portfolioDto);
         PortfolioEnt savedEnt = this.portfolioRepository.save(ent);

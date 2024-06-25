@@ -21,7 +21,7 @@ public class PortfolioEnt {
     @UuidGenerator(style = UuidGenerator.Style.RANDOM)
     private String id;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<HoldingEnt> holdings;
 
     @Column(name="cash")
