@@ -40,4 +40,16 @@ public class PortfolioService {
         return ModelConverter.convertEntToDto(savedEnt);
     }
 
+    public PortfolioDto addDummyData(){
+        PortfolioEnt portfolioEnt = new PortfolioEnt();
+        portfolioEnt.setCash(105);
+        HoldingEnt holdingEnt = new HoldingEnt();
+        holdingEnt.setShareId("abcd");
+        holdingEnt.setAmountHeld(5);
+        portfolioEnt.getHoldings().add(holdingEnt);
+
+        PortfolioEnt savedEnt = this.portfolioRepository.save(portfolioEnt);
+        return ModelConverter.convertEntToDto(savedEnt);
+    }
+
 }
