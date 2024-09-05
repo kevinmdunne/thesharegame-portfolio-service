@@ -28,4 +28,9 @@ public class PortfolioController {
     public PortfolioDto savePortfolio(@RequestBody PortfolioDto portfolioDto){
         return this.portfolioService.savePortfolio(portfolioDto);
     }
+
+    @GetMapping("/addDummyData")
+    public PortfolioDto addDummyData(){
+        return this.portfolioService.addDummyData();
+    }
 }

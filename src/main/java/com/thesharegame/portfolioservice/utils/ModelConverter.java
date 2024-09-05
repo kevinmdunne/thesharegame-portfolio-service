@@ -14,6 +14,8 @@ public class ModelConverter {
         PortfolioDto dto = PortfolioDto.builder()
                 .id(portfolioEnt.getId())
                 .cash(portfolioEnt.getCash())
+                .createDate(portfolioEnt.getCreateDate())
+                .modifyDate(portfolioEnt.getModifyDate())
                 .build();
 
         List<HoldingDto> holdings = new ArrayList<>();
@@ -21,6 +23,8 @@ public class ModelConverter {
             HoldingDto holdingDto = HoldingDto.builder()
                     .amountHeld(holdingEnt.getAmountHeld())
                     .shareId(holdingEnt.getShareId())
+                    .createDate(holdingEnt.getCreateDate())
+                    .modifyDate(holdingEnt.getModifyDate())
                     .build();
             holdings.add(holdingDto);
         }
@@ -33,6 +37,8 @@ public class ModelConverter {
         PortfolioEnt ent = PortfolioEnt.builder()
                 .id(portfolioDto.getId())
                 .cash(portfolioDto.getCash())
+                .createDate(portfolioDto.getCreateDate())
+                .modifyDate(portfolioDto.getModifyDate())
                 .build();
 
         List<HoldingEnt> holdings = new ArrayList<>();
@@ -40,6 +46,8 @@ public class ModelConverter {
             HoldingEnt holdingEnt = HoldingEnt.builder()
                     .amountHeld(holdingDto.getAmountHeld())
                     .shareId(holdingDto.getShareId())
+                    .createDate(holdingDto.getCreateDate())
+                    .modifyDate(holdingDto.getModifyDate())
                     .build();
             holdings.add(holdingEnt);
         }
