@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.thesharegame'
-version = '1.0.2'
+version = '1.0.3'
 
 java {
 	sourceCompatibility = '17'
@@ -47,5 +47,8 @@ jib {
 			username = "kevinmdunne@gmail.com"
 			password = "ke6Xajoo!"
 		}
+	}
+	container {
+		args = ['--spring.config.location=classpath:/application.properties,file:/var/config/portfolio_service.properties']
 	}
 }
